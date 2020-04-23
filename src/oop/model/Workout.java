@@ -81,6 +81,23 @@ public class Workout {
     public Exercise[] getExercises(){
         return exercises;
     }
+    public Exercise[] getExercisesWhithEquipment(){
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (exercises[i].getEquipments().equals(Equipments.NONE)){
+                count++;
+            }
+        }
+        Exercise[] exercisesWhithEquipment = new Exercise[count];
+        int j = 0;
+        for (int i = 0; i < size; i++) {
+            if (exercises[i].getEquipments().equals(Equipments.NONE)){
+                exercisesWhithEquipment[j] = exercises[i];
+                j++;
+            }
+        }
+        return exercisesWhithEquipment;
+    }
     public boolean hasExercises(String exerciseName){
         for (int i = 0; i <size; i++) {
             if (exercises[i]!=null&&exercises[i].getName().equals(exerciseName)){

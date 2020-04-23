@@ -1,21 +1,13 @@
 package oop.model;
 
-public class Aerobics implements Exercise {
-    private String name;
+public class Aerobics extends AbstractExercise implements Exercise {
     private int duration;
 
-    public Aerobics(String name) {
-        this.name = name;
-        this.duration = 3;
+    public Aerobics (String name, Equipments equipments, Approach[] approaches){
+        super(name,equipments);
+        WeightTraining weightTraining = new WeightTraining(name,approaches);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getDuration() {
         return duration;

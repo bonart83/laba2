@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
-public class WeightTraining implements ComplexExercise {
+public class WeightTraining extends AbstractExercise implements ComplexExercise {
 
     private class Node {
         public Node next;
@@ -31,6 +31,10 @@ public class WeightTraining implements ComplexExercise {
             add(approache);
             size++;
         }
+    }
+
+    public WeightTraining(String name, Equipments equipments){
+        super(name,equipments);
     }
 
     private void addNode(Node node){
@@ -111,15 +115,7 @@ public class WeightTraining implements ComplexExercise {
         }
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public int getDuration() {
