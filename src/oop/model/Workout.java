@@ -122,4 +122,35 @@ public class Workout {
         size *=2;
         exercises = newExercises;
     }
+    public String toString(){
+        StringBuilder sb = new StringBuilder("Workout:\n");
+        Exercise[] returnWorkout = getExercises();
+        for (int i = 0; i < returnWorkout.length; i++) {
+            if (returnWorkout[i]!=null){sb.append(returnWorkout[i].toString()+"\n");}
+        }
+        return sb.toString();
+    }
+
+    public  int indexOf(Exercise exercise){
+        Exercise[] returnWorkout = getExercises();
+        for (int i = 0; i < returnWorkout.length; i++) {
+            if (returnWorkout[i].equals(exercise)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public  int LastIndexOf(Exercise exercise){
+        Exercise[] returnWorkout = getExercises();
+        for (int i = returnWorkout.length-1; i >= 0 ; i--) {
+            if (returnWorkout[i].equals(exercise)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public boolean remove(Exercise exercise){
+        int index = indexOf(exercise);
+        return  remove(index)!=null;
+    }
 }

@@ -1,12 +1,47 @@
 package oop.model;
 
+import static oop.model.Equipments.BURBELL;
+
 public class Test {
     public static void main(String[] args) {
         //lab1test();
         //lab2test();
-        lab3test();
+        //lab3test();
+        lab4test();
     }
-
+    static void lab4test(){
+        Approach approach = new Approach();
+        Approach approach1 = new Approach(1 ,1, 1 );
+        Approach approach2 = new Approach(2 ,2, 2 );
+        Approach approach10 = new Approach(10 ,10, 10 );
+        Approach[] approaches = new Approach[4];
+        approaches[0] = approach;
+        approaches[1] = approach1;
+        approaches[2] = approach2;
+        approaches[3] = approach10;
+        Workout workout = new Workout(5);
+        Exercise exercise1 = new Aerobics("Присед",Equipments.NONE,approaches);
+        Exercise exercise2 = new Aerobics("Становая", BURBELL,approaches);
+        Exercise exercise3 = new Aerobics("Жим", BURBELL,approaches);
+        Exercise exercise4 = new Aerobics("Подтягивания",Equipments.NONE,approaches);
+        Exercise exercise5 = new Aerobics("Отжимания",Equipments.NONE,approaches);
+        workout.add(exercise1);
+        workout.add(exercise2);
+        workout.add(exercise3);
+        workout.add(exercise4);
+        workout.add(exercise5);
+        WeightTraining weightTraining = new WeightTraining("Штанга",Equipments.BURBELL);
+        weightTraining.add(approach);
+        weightTraining.add(approach1);
+        weightTraining.add(approach2);
+        System.out.println(weightTraining);
+        System.out.println(weightTraining.remove(approach1));
+        System.out.println(weightTraining);
+        System.out.println(workout);
+        workout.remove(exercise4);
+        System.out.println(workout);
+    }
+/*
     static void lab3test(){
         Approach approach = new Approach();
         Approach approach1 = new Approach(1 ,1, 1 );
@@ -34,7 +69,7 @@ public class Test {
         }
     }
 
-    /*static void lab2test(){
+    static void lab2test(){
         Approach approach = new Approach();
         Approach approach1 = new Approach(1 ,1, 1 );
         Approach approach2 = new Approach(2 ,2, 2 );

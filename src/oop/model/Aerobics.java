@@ -17,4 +17,17 @@ public class Aerobics extends AbstractExercise implements Exercise {
         this.duration = duration;
     }
 
+    public String toString(){
+        return String.format("%s, Equipment: %s",super.getName(), super.getEquipments());
+    }
+
+    public int hashCode(){
+        int hash = 53&super.hashCode() & getDuration();
+        return  hash;
+    }
+
+    public boolean equals(Object obj){
+        Aerobics otherAbstractExercise = (Aerobics) obj;
+        return super.getName()==otherAbstractExercise.getName() && this.getEquipments() == otherAbstractExercise.getEquipments();
+    }
 }

@@ -40,5 +40,16 @@ public class Approach {
         this.duration = duration;
     }
 
+    public String toString(){
+        return String.format("w: %s kg #: %s t: %s min",this.weight, this.attemptsQuantity, this.duration );
+    }
 
+    public int hashCode(){
+        int hash = this.duration & Double.hashCode(weight);
+        return  hash;
+    }
+    public boolean equals(Object obj){
+        Approach otherApproach = (Approach) obj;
+        return this.duration == otherApproach.duration && this.weight == otherApproach.weight && this.attemptsQuantity == otherApproach.attemptsQuantity ;
+    }
 }

@@ -204,4 +204,65 @@ public class WeightTraining extends AbstractExercise implements ComplexExercise 
         }
         return approachAttemptQuantities;
     }
+
+    @Override
+    public Approach remove(Approach approach) {
+        Node n = head;
+        Node res;
+        while (n!=null){
+            if (approach==n.value){
+                res=n.next;
+                n.next = n.next.next;
+                res.next=null;
+                size--;
+                return res.value;
+            }
+            n=n.next;
+        }
+        return null;
+    }
+
+    @Override
+    public int indexOf(Approach approach) {
+        Approach[] returnApproach = getApproaches();
+        for (int i = 0; i < returnApproach.length; i++) {
+            if (returnApproach.equals(approach)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public int lastIndexOf(Approach approach) {
+        Approach[] returnApproach = getApproaches();
+        for (int i = returnApproach.length-1; i >=0 ; i--) {
+            if (returnApproach.equals(approach)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder(String.format("%s, Equipment: %s. Approaches:\n",super.getName(), super.getEquipments()));
+        Approach[] returnApproach = getApproaches();
+        for (int i = 0; i < returnApproach.length; i++) {
+            sb.append(returnApproach[i].toString()+"\n");
+        }
+        return sb.toString();
+    }
+    public int hashCode(){
+        int hash = 71&super.hashCode();
+        Approach[] returnApproach = getApproaches();
+        for (int i = 0; i < returnApproach.length; i++) {
+            hash &=returnApproach[i].hashCode();
+        }
+        return  hash;
+    }
+
+    public boolean equals(Object obj){
+        WeightTraining otherWeightTraining = (WeightTraining) obj;
+        return getName()==otherWeightTraining.getName() && getEquipments() == otherWeightTraining.getEquipments() && size()==otherWeightTraining.size()&&getApproaches()==otherWeightTraining.getApproaches();
+    }
 }

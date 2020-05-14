@@ -22,5 +22,16 @@ public abstract class AbstractExercise implements Exercise {
     }
     public Equipments getEquipments(){return equipments;}
     public void setEquipments(Equipments equipments){this.equipments = equipments;}
+    public String toString(){
+        return String.format("%s, Equipment: %s",this.name, this.equipments);
+    }
+    public int hashCode(){
+        int hash = this.name.hashCode() & this.equipments.hashCode();
+        return  hash;
+    }
+    public boolean equals(Object obj){
+        AbstractExercise otherAbstractExercise = (AbstractExercise) obj;
+        return this.name==otherAbstractExercise.name && this.equipments == otherAbstractExercise.equipments;
+    }
 
 }
